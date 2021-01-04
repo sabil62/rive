@@ -13,13 +13,50 @@ class CounterProvider extends StatelessWidget {
         appBar: AppBar(
           title: Text('Provider Simple'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Builder(builder: (context) {
-              return Text(context.watch<Counter>().count.toString());
-            })
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Builder(builder: (context) {
+                return Text(
+                  context.watch<Counter>().count.toString(),
+                  style: TextStyle(fontSize: 38),
+                );
+              }),
+              SizedBox(
+                height: 30,
+              ),
+              Builder(
+                  builder: (context) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          RaisedButton(
+                            onPressed: () =>
+                                context.read<Counter>().increment(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.add,
+                                size: 36,
+                              ),
+                            ),
+                          ),
+                          RaisedButton(
+                            onPressed: () =>
+                                context.read<Counter>().decrement(),
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.remove,
+                                size: 36,
+                              ),
+                            ),
+                          )
+                        ],
+                      ))
+            ],
+          ),
         ),
       ),
     );

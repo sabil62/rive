@@ -1,3 +1,4 @@
+import 'package:apple/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,19 +46,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: Row(
-        children: [
-          FloatingActionButton(
-            heroTag: 'first',
-            onPressed: null,
-            child: Icon(Icons.add),
-          ),
-          FloatingActionButton(
-            onPressed: null,
-            heroTag: 'second',
-            child: Icon(Icons.remove),
-          )
-        ],
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(40.0, 0, 0, 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            FloatingActionButton(
+              heroTag: 'first',
+              onPressed: null,
+              child: Icon(Icons.add),
+            ),
+            FloatingActionButton(
+              onPressed: null,
+              heroTag: 'second',
+              child: Icon(Icons.remove),
+            )
+          ],
+        ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -68,8 +73,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 34,
                 color: Colors.red,
               ),
-              title: Text('Provider Architecuture'),
-              onTap: null,
+              title: Text('Provider Simple'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => CounterProvider())),
             )
           ],
         ),

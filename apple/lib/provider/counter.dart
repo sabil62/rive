@@ -11,9 +11,4 @@ class Counter extends ChangeNotifier {
     count--;
     notifyListeners();
   }
-
-  void multiply(int num) {
-    count = count * num;
-    notifyListeners();
-  }
 }
