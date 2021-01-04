@@ -68,6 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: Drawer(
         child: ListView(
           children: [
+            SizedBox(
+              height: 36,
+            ),
             ListTile(
               leading: Icon(
                 Icons.ac_unit,
