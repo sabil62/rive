@@ -1,3 +1,4 @@
+import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
 
@@ -78,6 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => CounterProvider())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.remove_circle_outline_sharp,
+                size: 34,
+                color: Colors.orange,
+              ),
+              title: Text('Provider Simple'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => PlayersProvider())),
             )
           ],
         ),
