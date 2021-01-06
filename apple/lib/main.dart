@@ -1,3 +1,4 @@
+import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
@@ -94,6 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => PlayersProvider())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.cached,
+                size: 34,
+                color: Colors.brown,
+              ),
+              title: Text('Provider Simple'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => AnimationSimple())),
             )
           ],
         ),
