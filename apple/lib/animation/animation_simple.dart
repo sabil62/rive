@@ -7,9 +7,10 @@ class AnimationSimple extends StatefulWidget {
 
 class _AnimationSimpleState extends State<AnimationSimple> {
   bool cc = false;
-  double height = 300;
-  double width = 300;
+  double height = 150;
+  double width = 150;
   double radii = 20;
+  double leftGo = 10;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,7 @@ class _AnimationSimpleState extends State<AnimationSimple> {
           children: [
             Text(
               'Animated Container',
-              style: font(32, weight: FontWeight.bold),
+              style: font(32.0),
             ),
             SizedBox(
               height: 20,
@@ -34,27 +35,64 @@ class _AnimationSimpleState extends State<AnimationSimple> {
                   duration: Duration(milliseconds: 1600),
                   height: height,
                   width: width,
+                  //curve: null,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(radii),
                       gradient: LinearGradient(
-                          colors: [
-                            Colors.green[100],
-                            Colors.green[500],
-                            Colors.black.withOpacity(0.7)
-                          ],
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight,
-                          stops: [null])),
+                        colors: [
+                          Colors.green[100],
+                          Colors.green[500],
+                          Colors.black.withOpacity(0.7)
+                        ],
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
+                      )),
                 ),
                 RaisedButton(
                   onPressed: () {
-                    height = height > 500 ? 200 : height + 100;
-                    width = width > 500 ? 200 : width + 100;
-                    radii = radii > 250 ? 20 : radii + 120;
+                    setState(() {
+                      height = height > 400 ? 150 : height + 100;
+                      width = width > 400 ? 150 : width + 100;
+                      radii = radii > 350 ? 20 : radii + 120;
+                    });
                   },
                   child: Text('Tap to change container'),
                 )
               ],
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Text(
+              'Animated Position',
+              style: font(30.0),
+            ),
+            Container(
+              height: 250,
+              child: Stack(
+                children: [
+                  AnimatedPositioned(
+                    child: Icon(
+                      Icons.train,
+                      size: 230,
+                      color: Colors.red[400],
+                    ),
+                    duration: Duration(milliseconds: 1600),
+                    right: leftGo,
+                  ),
+                ],
+              ),
+            ),
+            RaisedButton(
+                child: Text('Click here to move icon'),
+                onPressed: () {
+                  setState(() {
+                    leftGo = leftGo > 300 ? 0 : leftGo + 100;
+                  });
+                }),
+            Text(
+              'Animated Position',
+              style: font(30.0),
             ),
           ],
         ),

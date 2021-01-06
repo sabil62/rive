@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 34,
                 color: Colors.orange,
               ),
-              title: Text('Provider Simple'),
+              title: Text('Provider Complex'),
               onTap: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
@@ -102,7 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 34,
                 color: Colors.brown,
               ),
-              title: Text('Provider Simple'),
+              title: Text('Animations Simple'),
               onTap: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
