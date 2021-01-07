@@ -6,11 +6,12 @@ class AnimationSimple extends StatefulWidget {
 }
 
 class _AnimationSimpleState extends State<AnimationSimple> {
-  bool cc = false;
+  bool tappedAnimatedCross = false;
   double height = 150;
   double width = 150;
   double radii = 20;
   double leftGo = 10;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +71,7 @@ class _AnimationSimpleState extends State<AnimationSimple> {
             Container(
               height: 250,
               child: Stack(
+                //container or other widget should cover stack to define HEIGHT
                 children: [
                   AnimatedPositioned(
                     child: Icon(
@@ -91,9 +93,28 @@ class _AnimationSimpleState extends State<AnimationSimple> {
                   });
                 }),
             Text(
-              'Animated Position',
+              'Animated Crossfade',
               style: font(30.0),
             ),
+            AnimatedCrossFade(
+                crossFadeState: tappedAnimatedCross
+                    ? CrossFadeState.showSecond //bcoz tapped is false initially
+                    : CrossFadeState.showFirst,
+                firstChild: Icon(
+                  Icons.electric_bike,
+                  size: 64,
+                  color: Colors.red[300],
+                ),
+                secondChild: Icon(
+                  Icons.rice_bowl_sharp,
+                  size: 68,
+                  color: Colors.blue[400],
+                ),
+                duration: Duration(milliseconds: 1600)),
+            RaisedButton(
+              onPressed: () => tappedAnimatedCross != tappedAnimatedCross,
+              child: Text('Press here to change up ICON'),
+            )
           ],
         ),
       ),
