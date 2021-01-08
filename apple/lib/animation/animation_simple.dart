@@ -38,16 +38,19 @@ class _AnimationSimpleState extends State<AnimationSimple> {
                   width: width,
                   //curve: null,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(radii),
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.green[100],
-                          Colors.green[500],
-                          Colors.black.withOpacity(0.7)
-                        ],
-                        begin: Alignment.bottomLeft,
-                        end: Alignment.topRight,
-                      )),
+                    borderRadius: BorderRadius.circular(radii),
+                    color: Colors.pink[100].withOpacity(0.9),
+                    // gradient: LinearGradient(
+                    //   //didnt recognize this colors:
+                    //   colors: [
+                    //     Colors.green[100],
+                    //     Colors.green[500],
+                    //     Colors.black.withOpacity(0.7)
+                    //   ],
+                    //   begin: Alignment.bottomLeft,
+                    //   end: Alignment.topRight,
+                    // )
+                  ),
                 ),
                 RaisedButton(
                   onPressed: () {
@@ -102,17 +105,21 @@ class _AnimationSimpleState extends State<AnimationSimple> {
                     : CrossFadeState.showFirst,
                 firstChild: Icon(
                   Icons.electric_bike,
-                  size: 64,
+                  size: 120,
                   color: Colors.red[300],
                 ),
                 secondChild: Icon(
                   Icons.rice_bowl_sharp,
-                  size: 68,
+                  size: 120,
                   color: Colors.blue[400],
                 ),
                 duration: Duration(milliseconds: 1600)),
             RaisedButton(
-              onPressed: () => tappedAnimatedCross != tappedAnimatedCross,
+              onPressed: () {
+                setState(() {
+                  tappedAnimatedCross = !tappedAnimatedCross;
+                });
+              },
               child: Text('Press here to change up ICON'),
             )
           ],
