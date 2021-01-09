@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
+import 'dart:math' as math;
 
 class SimpleAnimation extends StatefulWidget {
   @override
@@ -19,7 +20,12 @@ class _SimpleAnimationState extends State<SimpleAnimation> {
           children: [
             Stack(
               overflow: Overflow.visible,
-              children: [boxanimation(), circleButton()],
+              children: [
+                boxanimation(),
+                rectTransform(),
+                rectRotate(),
+                circleButton()
+              ],
             )
           ],
         ),
@@ -47,6 +53,27 @@ class _SimpleAnimationState extends State<SimpleAnimation> {
     );
   }
 
+  Widget rectTransform() {
+    return Positioned(
+      top: 10,
+      left: 10,
+      child: PlayAnimation(
+        tween: Tween(begin: Offset(0, 0), end: Offset(160, 160)),
+        duration: Duration(milliseconds: 1000),
+        builder: (context, child, anims) {
+          return Transform.translate(
+            offset: anims,
+            child: Container(
+              height: 40,
+              width: 150,
+              color: Colors.yellow,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget circleButton() {
     return Positioned(
       top: 230,
@@ -63,6 +90,27 @@ class _SimpleAnimationState extends State<SimpleAnimation> {
                   BoxDecoration(shape: BoxShape.circle, color: Colors.red[200]),
               height: 100,
               width: 100,
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget rectRotate() {
+    return Positioned(
+      top: 30,
+      right: 30,
+      child: PlayAnimation(
+        tween: Tween(begin: math.pi, end: math.pi * 4),
+        duration: Duration(milliseconds: 2400),
+        builder: (context, child, anims) {
+          return Transform.rotate(
+            angle: anims,
+            child: Container(
+              height: 30,
+              width: 130,
+              color: Colors.brown[200],
             ),
           );
         },
