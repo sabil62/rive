@@ -1,4 +1,5 @@
 import 'package:apple/animation/animation_simple.dart';
+import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(
               onPressed: null,
               heroTag: 'second',
-              child: Icon(Icons.remove),
+              child: Icon(Icons.remove, size: 37, color: Colors.red),
             )
           ],
         ),
@@ -107,6 +108,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => AnimationSimple())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.yellow,
+              ),
+              title: Text('Simple Animations'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => SimpleAnimation())),
             )
           ],
         ),
