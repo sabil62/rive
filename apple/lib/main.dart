@@ -1,5 +1,6 @@
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
+import 'package:apple/http/http.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
@@ -141,6 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Divider(
               color: Colors.black,
               height: 2,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.no_cell,
+                size: 34,
+                color: Colors.yellow,
+              ),
+              title: Text('Http simple'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => HttpApp())),
             ),
           ],
         ),

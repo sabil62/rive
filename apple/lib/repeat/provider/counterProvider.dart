@@ -22,8 +22,7 @@ class CounterProviders extends StatelessWidget {
         appBar: AppBar(
           title: Text("Counters"),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        body: ListView(
           children: [
             Builder(
               builder: (context) => Text(
@@ -78,57 +77,82 @@ class CounterProviders extends StatelessWidget {
               itemCount:
                   playering.player.length, //playering is instance of class
               itemBuilder: (context, index) {
-                return Container(
-                  child: Builder(
-                    builder: (BuildContext context) => Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Builder(
+                        builder: (BuildContext context) => Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Text(context.watch<Players>().player[index].name,
-                                style: textstyle(22.0)),
-                            Text(
-                              context
-                                  .watch<Players>()
-                                  .player[index]
-                                  .power
-                                  .toString(),
-                              style: textstyle(32.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    context.watch<Players>().player[index].name,
+                                    style: textstyle(26.0)),
+                                Text(
+                                  context
+                                      .watch<Players>()
+                                      .player[index]
+                                      .power
+                                      .toString(),
+                                  style: textstyle(32.0),
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.all(12.0),
+                                  child: RaisedButton(
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 45,
+                                    ),
+                                    onPressed: () => context
+                                        .read<Players>()
+                                        .increments(index),
+                                  ),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.all(12.0),
+                                    child: RaisedButton(
+                                      onPressed: () {
+                                        return context
+                                            .read<Players>()
+                                            .decrements(index);
+                                      },
+                                      child: Icon(
+                                        Icons.remove,
+                                        size: 45,
+                                      ),
+                                    ))
+                              ],
                             )
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: RaisedButton(
-                                child: Icon(
-                                  Icons.add,
-                                  size: 45,
-                                ),
-                                onPressed: () =>
-                                    context.read<Players>().increments(index),
-                              ),
-                            ),
-                            Padding(
-                                padding: EdgeInsets.all(12.0),
-                                child: RaisedButton(
-                                  onPressed: () {
-                                    return context
-                                        .read<Players>()
-                                        .decrements(index);
-                                  },
-                                  child: Icon(
-                                    Icons.remove,
-                                    size: 45,
-                                  ),
-                                ))
-                          ],
-                        )
-                      ],
+                      ),
                     ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.0),
+                        gradient: LinearGradient(
+                            colors: [
+                              Colors.orange.shade100,
+                              Colors.orange.shade600
+                            ],
+                            begin: Alignment.bottomLeft,
+                            end: Alignment.topRight),
+                        // color: Colors.orange.withOpacity(0.3),
+                        // border: Border(top: 2.0,left: 2,right: 3,bottom: 2),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black,
+                              offset: Offset(2, 2),
+                              blurRadius: 10),
+                        ]),
                   ),
                 );
               },
