@@ -2,6 +2,7 @@ import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
+import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -109,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   new MaterialPageRoute(
                       builder: (context) => AnimationSimple())),
             ),
+<<<<<<< HEAD
             ListTile(
               leading: Icon(
                 Icons.ramen_dining,
@@ -120,6 +122,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => SimpleAnimation())),
+=======
+            Divider(
+              color: Colors.black,
+              height: 2,
+            ),
+            Text("Repeated"),
+            ListTile(
+              leading: Icon(
+                Icons.trip_origin_rounded,
+                size: 34,
+                color: Colors.brown,
+              ),
+              title: Text('Repeated Simple Provider'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => CounterProviders())),
+            ),
+            Divider(
+              color: Colors.black,
+              height: 2,
+>>>>>>> 13925765c73f7cf3311ddc3c4ec80a73784c6857
             )
           ],
         ),
