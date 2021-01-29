@@ -110,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   new MaterialPageRoute(
                       builder: (context) => AnimationSimple())),
             ),
-<<<<<<< HEAD
             ListTile(
               leading: Icon(
                 Icons.ramen_dining,
@@ -122,19 +121,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => SimpleAnimation())),
-=======
-            Divider(
-              color: Colors.black,
-              height: 2,
             ),
-            Text("Repeated"),
+            Divider(
+              height: 2,
+              color: Colors.black,
+            ),
             ListTile(
               leading: Icon(
-                Icons.trip_origin_rounded,
+                Icons.zoom_in_rounded,
                 size: 34,
-                color: Colors.brown,
+                color: Colors.green,
               ),
-              title: Text('Repeated Simple Provider'),
+              title: Text('Counter Provider Repeat'),
               onTap: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
@@ -143,8 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Divider(
               color: Colors.black,
               height: 2,
->>>>>>> 13925765c73f7cf3311ddc3c4ec80a73784c6857
-            )
+            ),
           ],
         ),
       ),

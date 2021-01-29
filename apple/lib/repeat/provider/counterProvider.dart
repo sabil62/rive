@@ -1,14 +1,21 @@
 import 'package:apple/repeat/provider/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import './players.dart';
 
 class CounterProviders extends StatelessWidget {
+  //for listview.builder
+  Players playering = Players();
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<Counters>(
           create: (context) => Counters(),
+        ),
+        ChangeNotifierProvider<Players>(
+          create: (context) => Players(),
         )
       ],
       child: Scaffold(
@@ -58,6 +65,73 @@ class CounterProviders extends StatelessWidget {
                   )
                 ],
               ),
+            ),
+            //---------------------------------------------Another (Players) class--------------------------------------
+            Divider(
+              height: 3,
+              color: Colors.black,
+              indent: 2,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
+              itemCount:
+                  playering.player.length, //playering is instance of class
+              itemBuilder: (context, index) {
+                return Container(
+                  child: Builder(
+                    builder: (BuildContext context) => Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(context.watch<Players>().player[index].name,
+                                style: textstyle(22.0)),
+                            Text(
+                              context
+                                  .watch<Players>()
+                                  .player[index]
+                                  .power
+                                  .toString(),
+                              style: textstyle(32.0),
+                            )
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: RaisedButton(
+                                child: Icon(
+                                  Icons.add,
+                                  size: 45,
+                                ),
+                                onPressed: () =>
+                                    context.read<Players>().increments(index),
+                              ),
+                            ),
+                            Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: RaisedButton(
+                                  onPressed: () {
+                                    return context
+                                        .read<Players>()
+                                        .decrements(index);
+                                  },
+                                  child: Icon(
+                                    Icons.remove,
+                                    size: 45,
+                                  ),
+                                ))
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
             )
           ],
         ),
