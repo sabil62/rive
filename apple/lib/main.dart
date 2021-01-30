@@ -4,6 +4,7 @@ import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
 import 'package:apple/provider/counterProvider.dart';
+import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
 
@@ -139,6 +140,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => CounterProviders())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.time_to_leave,
+                size: 34,
+                color: Colors.yellow,
+              ),
+              title: Text('In Build Animation'),
+              onTap: () {
+                return Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => InBuildAnimation()));
+              },
             ),
             Divider(
               color: Colors.black,
