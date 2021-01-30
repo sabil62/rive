@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(
                 Icons.time_to_leave,
                 size: 34,
-                color: Colors.yellow,
+                color: Colors.brown,
               ),
               title: Text('In Build Animation'),
               onTap: () {
