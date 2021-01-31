@@ -15,9 +15,12 @@ class _SimpleAnimState extends State<SimpleAnim> {
     return Scaffold(
       body: ListView(
         children: [
-          Stack(
-            overflow: Overflow.visible, //for the circle in between
-            children: [topBox(), doubleStackedPlayAnimation()],
+          Container(
+            height: 400,
+            child: Stack(
+              overflow: Overflow.visible, //for the circle in between
+              children: [topBox(), doubleStackedPlayAnimation()],
+            ),
           ),
           bigBox(),
           SizedBox(
@@ -33,7 +36,7 @@ class _SimpleAnimState extends State<SimpleAnim> {
     return Positioned(
       top: 0,
       child: PlayAnimation(
-        tween: Tween(begin: 0, end: 400),
+        tween: Tween<double>(begin: 0, end: 400),
         duration: Duration(milliseconds: 1600),
         curve: Curves.easeInOut,
         builder: (context, child, height) {
@@ -48,7 +51,8 @@ class _SimpleAnimState extends State<SimpleAnim> {
                       offset: Offset(0, 4),
                       blurRadius: 10)
                 ],
-                gradient: LinearGradient(colors: [Colors.pink[100]])),
+                gradient: LinearGradient(
+                    colors: [Colors.pink[100], Colors.pink[100]])),
           );
         },
       ),
@@ -60,19 +64,19 @@ class _SimpleAnimState extends State<SimpleAnim> {
       top: 100,
       left: 10,
       child: PlayAnimation(
-        tween: Tween(begin: 0, end: 150),
+        tween: Tween<double>(begin: 0, end: 150),
         delay: Duration(milliseconds: 400),
         duration: Duration(milliseconds: 1200),
         curve: Curves.bounceOut,
         builder: (context, child, height) {
           return PlayAnimation(
             delay: Duration(milliseconds: 400),
-            duration: Duration(milliseconds: 1200),
+            duration: Duration(milliseconds: 1600),
             curve: Curves.bounceOut,
-            tween: Tween(begin: 0, end: 300),
+            tween: Tween<double>(begin: 0, end: 300),
             builder: (context, child, width) {
               return PlayAnimation(
-                tween: Tween(begin: 0, end: 130),
+                tween: Tween<double>(begin: 0, end: 130),
                 curve: Curves.ease,
                 builder: (context, child, radius) {
                   return Container(
@@ -80,11 +84,102 @@ class _SimpleAnimState extends State<SimpleAnim> {
                     width: width,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(radius),
-                        color: Colors.green[height < 200 ? 100 : 400]),
+                        color: Colors.green[width < 250 ? 100 : 500]),
                   );
                 },
               );
             },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget circleMiddle() {
+    return Positioned(
+      top: 400,
+      left: MediaQuery.of(context).size.width * 0.4,
+      child: PlayAnimation(
+        delay: Duration(milliseconds: 900),
+        duration: Duration(
+          milliseconds: 900,
+        ),
+        tween: Tween<double>(
+            begin: 0, end: MediaQuery.of(context).size.width * 0.1),
+        builder: (context, child, val) {
+          return Container(
+            height: val,
+            width: val,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.red[800],
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black.withOpacity(0.22),
+                      offset: Offset(2, 2),
+                      blurRadius: 8)
+                ]),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget bounceAnimatedPosition() {
+    return Positioned(
+      top: 0,
+      left: 40,
+      child: PlayAnimation(
+        delay: Duration(milliseconds: 200),
+        duration: Duration(milliseconds: 3200),
+        tween: Tween<double>(begin: 0, end: 200),
+        curve: Curves.bounceInOut,
+        builder: (context, child, bouncer) {
+          return Container(
+            height: 400,
+            width: 330,
+            child: Stack(
+              overflow: Overflow.visible,
+              children: [
+                //This should be commented
+                AnimatedPositioned(
+                  top: bouncer,
+                  left: bouncer / 10,
+                  duration: null,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.22))
+                        ]),
+                  ),
+                ),
+                //The above should be commented
+                Positioned(
+                  top: bouncer,
+                  left: 250,
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        color: Colors.brown[400],
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.22))
+                        ]),
+                  ),
+                )
+              ],
+            ),
           );
         },
       ),
