@@ -19,8 +19,16 @@ class _SimpleAnimState extends State<SimpleAnim> {
             height: 400,
             child: Stack(
               overflow: Overflow.visible, //for the circle in between
-              children: [topBox(), doubleStackedPlayAnimation()],
+              children: [
+                topBox(),
+                doubleStackedPlayAnimation(),
+                circleMiddle(),
+                bounceAnimatedPosition()
+              ],
             ),
+          ),
+          SizedBox(
+            height: 50,
           ),
           bigBox(),
           SizedBox(
@@ -97,15 +105,14 @@ class _SimpleAnimState extends State<SimpleAnim> {
 
   Widget circleMiddle() {
     return Positioned(
-      top: 400,
+      top: 350,
       left: MediaQuery.of(context).size.width * 0.4,
       child: PlayAnimation(
         delay: Duration(milliseconds: 900),
         duration: Duration(
           milliseconds: 900,
         ),
-        tween: Tween<double>(
-            begin: 0, end: MediaQuery.of(context).size.width * 0.1),
+        tween: Tween<double>(begin: 0, end: 100),
         builder: (context, child, val) {
           return Container(
             height: val,
@@ -132,7 +139,7 @@ class _SimpleAnimState extends State<SimpleAnim> {
       child: PlayAnimation(
         delay: Duration(milliseconds: 200),
         duration: Duration(milliseconds: 3200),
-        tween: Tween<double>(begin: 0, end: 200),
+        tween: Tween<double>(begin: 0, end: 280),
         curve: Curves.bounceInOut,
         builder: (context, child, bouncer) {
           return Container(
@@ -142,31 +149,32 @@ class _SimpleAnimState extends State<SimpleAnim> {
               overflow: Overflow.visible,
               children: [
                 //This should be commented
-                AnimatedPositioned(
-                  top: bouncer,
-                  left: bouncer / 10,
-                  duration: null,
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: Colors.orange,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(2, 2),
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.22))
-                        ]),
-                  ),
-                ),
+                // AnimatedPositioned(
+                //   top: bouncer,
+                //   left: bouncer / 10,
+                //   duration: null,
+                //   child: Container(
+                //     height: 50,
+                //     width: 50,
+                //     decoration: BoxDecoration(
+                //         color: Colors.orange,
+                //         shape: BoxShape.circle,
+                //         boxShadow: [
+                //           BoxShadow(
+                //               offset: Offset(2, 2),
+                //               blurRadius: 10,
+                //               color: Colors.black.withOpacity(0.22))
+                //         ]),
+                //   ),
+                // ),
                 //The above should be commented
                 Positioned(
                   top: bouncer,
                   left: 250,
                   child: Container(
-                    height: 50,
-                    width: 50,
+                    height: 80,
+                    width: 80,
+                    child: Text("bounceAnimatedPosition"),
                     decoration: BoxDecoration(
                         color: Colors.brown[400],
                         shape: BoxShape.circle,
