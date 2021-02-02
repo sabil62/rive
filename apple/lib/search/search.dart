@@ -27,10 +27,10 @@ class _SearchAppState extends State<SearchApp> {
     setState(() {
       data = jsonDecode(response.body);
     });
-    var employees;
+    var employees = List<Employee>();
     //---------------Check this
     for (var u in data) {
-      employees.add(data[u]);
+      employees.add(Employee.fromJson(u));
     }
     return employees;
   }
@@ -55,6 +55,8 @@ class _SearchAppState extends State<SearchApp> {
           children: [
             Text("Search items"),
             ListView.builder(
+              shrinkWrap: true,
+              physics: ScrollPhysics(),
               itemCount: emplpoyeeDisplayInSearch.length + 1,
               itemBuilder: (context, index) {
                 return index == 0
@@ -62,15 +64,19 @@ class _SearchAppState extends State<SearchApp> {
                     : Padding(
                         padding: const EdgeInsets.fromLTRB(4, 12, 4, 12),
                         child: Container(
+                          height: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(14),
                               color: Colors.orange[200]),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(emplpoyeeDisplayInSearch[index].name),
-                              Text(emplpoyeeDisplayInSearch[index].email)
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(emplpoyeeDisplayInSearch[index - 1].name),
+                                Text(emplpoyeeDisplayInSearch[index - 1].email)
+                              ],
+                            ),
                           ),
                         ),
                       );

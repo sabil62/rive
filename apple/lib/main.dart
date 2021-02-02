@@ -1,3 +1,4 @@
+import 'package:apple/Tabs/tab.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/http/http.dart';
@@ -8,6 +9,7 @@ import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:flutter/material.dart';
+import './search/search.dart';
 
 void main() {
   runApp(MyApp());
@@ -194,6 +196,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   new MaterialPageRoute(
                       builder: (context) => HttpComplexApp())),
             ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent,
+              ),
+              title: Text('TabBar'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => TabBarApp())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.fiber_dvr,
+                size: 34,
+                color: Colors.red,
+              ),
+              title: Text('Search'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => SearchApp())),
+            )
           ],
         ),
       ),
