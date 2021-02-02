@@ -1,5 +1,6 @@
 import 'package:apple/Tabs/tab.dart';
 import 'package:apple/Tabs/tabBottom.dart';
+import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/http/http.dart';
@@ -234,9 +235,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 34,
                 color: Colors.green,
               ),
-              title: Text('Http simple'),
+              title: Text('Bottom Navigation'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => TabBarBottom())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.do_disturb_off_rounded,
+                size: 34,
+                color: Colors.lime,
+              ),
+              title: Text('Bottom Navigation Two(didnt)'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => BottomTabTwo())),
             ),
           ],
         ),
