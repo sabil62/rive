@@ -42,7 +42,10 @@ class _SearchComplexState extends State<SearchComplex> {
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
-            Text("Click Search Icon to actually Search"),
+            Text(
+              "Click Search Icon to actually Search",
+              style: TextStyle(fontSize: 19),
+            ),
             ListView.builder(
               shrinkWrap: true,
               physics: ScrollPhysics(),
@@ -58,75 +61,87 @@ class _SearchComplexState extends State<SearchComplex> {
   }
 
   Widget searchBar() {
-    return TextField(
-      decoration: InputDecoration(
-          hintText: "Enter what you want to search!",
-          hintStyle:
-              TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[400]),
-          suffixIcon: IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              writtenInSearchBar = writtenInSearchBar.toLowerCase();
-              setState(() {
-                playerActualDisplay = playerCopy.where((value) {
-                  return value.name
-                          .toLowerCase()
-                          .contains(writtenInSearchBar) ||
-                      value.email.toLowerCase().contains(writtenInSearchBar) ||
-                      value.phone.toLowerCase().contains(writtenInSearchBar);
-                }).toList();
-              });
-            },
-          ),
-          prefixIcon: Icon(Icons.circle),
-          focusColor: Colors.green,
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 4, color: Colors.green)),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12), gapPadding: 2)),
-      onChanged: (valueWritten) {
-        setState(() {
-          writtenInSearchBar = valueWritten;
-        });
-      },
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: "Enter what you want to search!",
+            hintStyle:
+                TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[400]),
+            suffixIcon: IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                writtenInSearchBar = writtenInSearchBar.toLowerCase();
+                setState(() {
+                  playerActualDisplay = playerCopy.where((value) {
+                    return value.name
+                            .toLowerCase()
+                            .contains(writtenInSearchBar) ||
+                        value.email
+                            .toLowerCase()
+                            .contains(writtenInSearchBar) ||
+                        value.phone.toLowerCase().contains(writtenInSearchBar);
+                  }).toList();
+                });
+              },
+            ),
+            prefixIcon: Icon(Icons.circle),
+            focusColor: Colors.green,
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(22),
+                borderSide: BorderSide(
+                  width: 4,
+                  color: Colors.green,
+                )),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(22), gapPadding: 2)),
+        onChanged: (valueWritten) {
+          setState(() {
+            writtenInSearchBar = valueWritten;
+          });
+        },
+      ),
     );
   }
 
   Widget beautifulContainer(int index) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            playerActualDisplay[index - 1].name,
-            style: fonter(),
-          ),
-          Text(playerActualDisplay[index - 1].email),
-          Text(
-            playerActualDisplay[index - 1].phone,
-            style: fonter(),
-          )
-        ],
-      ),
-      height: 105,
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                blurRadius: 10,
-                color: Colors.black.withOpacity(0.36),
-                offset: Offset(3, 3)),
-            BoxShadow(
-                blurRadius: 10,
-                color: Colors.blue[100].withOpacity(0.46),
-                offset: Offset(-3, 3)),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 8),
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              playerActualDisplay[index - 1].name,
+              style: fonter(),
+            ),
+            Text(playerActualDisplay[index - 1].email),
+            Text(
+              playerActualDisplay[index - 1].phone,
+              style: fonter(),
+            )
           ],
-          border:
-              Border.all(color: Colors.grey[300].withOpacity(0.6), width: 2),
-          borderRadius: BorderRadius.circular(17),
-          gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              colors: [Colors.orange[200], Colors.orange[600]],
-              end: Alignment.topRight)),
+        ),
+        height: 105,
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 10,
+                  color: Colors.black.withOpacity(0.36),
+                  offset: Offset(3, 3)),
+              BoxShadow(
+                  blurRadius: 10,
+                  color: Colors.blue[100].withOpacity(0.46),
+                  offset: Offset(-3, 3)),
+            ],
+            border:
+                Border.all(color: Colors.grey[300].withOpacity(0.6), width: 2),
+            borderRadius: BorderRadius.circular(17),
+            gradient: LinearGradient(
+                begin: Alignment.bottomLeft,
+                colors: [Colors.orange[200], Colors.orange[600]],
+                end: Alignment.topRight)),
+      ),
     );
   }
 
