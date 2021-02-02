@@ -91,6 +91,8 @@ class _SearchAppState extends State<SearchApp> {
   Widget searchbar() {
     return TextField(
       decoration: InputDecoration(
+          prefixIcon: Icon(Icons.search),
+          suffixIcon: Icon(Icons.search_rounded),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.grey[300])),

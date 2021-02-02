@@ -8,6 +8,7 @@ import 'package:apple/provider/counterProvider.dart';
 import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
+import 'package:apple/search/searchComp.dart';
 import 'package:flutter/material.dart';
 import './search/search.dart';
 
@@ -215,7 +216,17 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Search'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => SearchApp())),
-            )
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.do_disturb_alt_outlined,
+                size: 34,
+                color: Colors.yellow,
+              ),
+              title: Text('Search Complex'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => SearchComplex())),
+            ),
           ],
         ),
       ),
