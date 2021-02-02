@@ -49,9 +49,62 @@ class _SearchAppState extends State<SearchApp> {
       appBar: AppBar(
         title: Text('SearchBar'),
       ),
-      body: ListView(
-        children: [Text("Search items")],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            Text("Search items"),
+            ListView.builder(
+              itemCount: emplpoyeeDisplayInSearch.length + 1,
+              itemBuilder: (context, index) {
+                return index == 0
+                    ? searchbar()
+                    : Padding(
+                        padding: const EdgeInsets.fromLTRB(4, 12, 4, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(14),
+                              color: Colors.orange[200]),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(emplpoyeeDisplayInSearch[index].name),
+                              Text(emplpoyeeDisplayInSearch[index].email)
+                            ],
+                          ),
+                        ),
+                      );
+              },
+            )
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget searchbar() {
+    return TextField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: Colors.grey[300])),
+          hintText: 'Enter a search term',
+          focusColor: Colors.green,
+          hintStyle: TextStyle(
+            color: Colors.purple,
+            fontStyle: FontStyle.italic,
+          ),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.green[900]))),
+      onChanged: (valueWritten) {
+        valueWritten = valueWritten.toLowerCase();
+        setState(() {
+          emplpoyeeDisplayInSearch = employeeCopy.where((value) {
+            return (value.name.toLowerCase().contains(valueWritten) ||
+                value.email.toLowerCase().contains(valueWritten));
+          }).toList();
+        });
+      },
     );
   }
 }
