@@ -4,6 +4,7 @@ import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/charts/chart.dart';
+import 'package:apple/charts/chartImport.dart';
 import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';

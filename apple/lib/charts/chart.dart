@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import './chartImport.dart';
 
 class ChartApp extends StatelessWidget {
   generateData() {
@@ -12,12 +13,35 @@ class ChartApp extends StatelessWidget {
     ];
     return [
       charts.Series(
-          data: data,
-          id: "City Rain",
-          domainFn: (Cities cit, _) => cit.name,
-          measureFn: (Cities city, _) => city.rain,
-          colorFn: (Cities city, _) =>
-              charts.ColorUtil.fromDartColor(city.color(city.rain))),
+        data: data,
+        id: "City Rain",
+        domainFn: (Cities cit, _) => cit.name,
+        measureFn: (Cities city, _) => city.rain,
+        // colorFn: (Cities city, _) =>
+        //     charts.ColorUtil.fromDartColor(city.color(city.rain)),
+        // labelAccessorFn: (Cities row, _) => '${row.rain}'),
+        labelAccessorFn: (Cities row, _) => '${row.rain}: ${row.name}',
+      )
+    ];
+  }
+
+  generateAnotherData() {
+    final data = [
+      new LinearSales(0, 150),
+      new LinearSales(1, 75),
+      new LinearSales(2, 120),
+      new LinearSales(3, 50),
+    ];
+
+    return [
+      new charts.Series<LinearSales, int>(
+        id: 'Sales',
+        domainFn: (LinearSales sales, _) => sales.year,
+        measureFn: (LinearSales sales, _) => sales.sales,
+        data: data,
+        // Set a label accessor to control the text of the arc label.
+        labelAccessorFn: (LinearSales row, _) => '${row.year}: ${row.sales}',
+      )
     ];
   }
 
@@ -29,10 +53,25 @@ class ChartApp extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          charts.PieChart(generateData(),
+          Container(
+            height: 350,
+            color: Colors.brown.withOpacity(0.3),
+            child: charts.PieChart(generateData(),
+                animate: true,
+                animationDuration: Duration(milliseconds: 2200),
+                defaultRenderer: new charts.ArcRendererConfig(arcWidth: 60)),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(height: 220, child: DonutAutoLabelChart.withSampleData()),
+          Container(
+            height: 260,
+            child: DonutAutoLabelChart(
+              generateAnotherData(),
               animate: true,
-              animationDuration: Duration(milliseconds: 2200),
-              defaultRenderer: new charts.ArcRendererConfig(arcWidth: 60)),
+            ),
+          )
         ],
       ),
     );
@@ -57,4 +96,11 @@ class Cities {
   }
 
   Cities(this.name, this.rain);
+}
+
+class LinearSales {
+  final int year;
+  final int sales;
+
+  LinearSales(this.year, this.sales);
 }
