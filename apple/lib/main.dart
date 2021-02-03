@@ -3,6 +3,7 @@ import 'package:apple/Tabs/tabBottom.dart';
 import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
+import 'package:apple/charts/chart.dart';
 import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
@@ -248,6 +249,16 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Bottom Navigation Two(didnt)'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => BottomTabTwo())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.charging_station,
+                size: 34,
+                color: Colors.redAccent,
+              ),
+              title: Text('Charts'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => ChartApp())),
             ),
           ],
         ),
