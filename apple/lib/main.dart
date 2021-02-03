@@ -4,7 +4,7 @@ import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/charts/chart.dart';
-import 'package:apple/charts/chartImport.dart';
+
 import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
 import 'package:apple/provider%20complex/playersProvider.dart';
@@ -13,6 +13,7 @@ import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/search/searchComp.dart';
+import 'package:apple/stream/stream.dart';
 import 'package:flutter/material.dart';
 import './search/search.dart';
 
@@ -260,6 +261,18 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Charts'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => ChartApp())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.charging_station,
+                size: 34,
+                color: Colors.purple,
+              ),
+              title: Text('STREAM'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => StreamAppSimple())),
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:apple/charts/chartImports2.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import './chartImport.dart';
@@ -13,14 +14,14 @@ class ChartApp extends StatelessWidget {
     ];
     return [
       charts.Series(
+        labelAccessorFn: (Cities row, _) => '${row.name}',
         data: data,
         id: "City Rain",
         domainFn: (Cities cit, _) => cit.name,
         measureFn: (Cities city, _) => city.rain,
-        // colorFn: (Cities city, _) =>
-        //     charts.ColorUtil.fromDartColor(city.color(city.rain)),
+        colorFn: (Cities city, _) =>
+            charts.ColorUtil.fromDartColor(city.color(city.rain)),
         // labelAccessorFn: (Cities row, _) => '${row.rain}'),
-        labelAccessorFn: (Cities row, _) => '${row.rain}: ${row.name}',
       )
     ];
   }
@@ -56,10 +57,20 @@ class ChartApp extends StatelessWidget {
           Container(
             height: 350,
             color: Colors.brown.withOpacity(0.3),
-            child: charts.PieChart(generateData(),
-                animate: true,
-                animationDuration: Duration(milliseconds: 2200),
-                defaultRenderer: new charts.ArcRendererConfig(arcWidth: 60)),
+            child: charts.PieChart(
+              generateData(),
+              animate: true,
+              animationDuration: Duration(milliseconds: 2200),
+              defaultRenderer: charts.ArcRendererConfig(
+                  arcWidth: 60,
+                  arcRendererDecorators: [
+                    new charts.ArcLabelDecorator(
+                        labelPosition: charts.ArcLabelPosition.inside,
+                        insideLabelStyleSpec: new charts.TextStyleSpec(
+                            fontSize: 16,
+                            color: charts.Color.fromHex(code: "#FFFFFF")))
+                  ]),
+            ),
           ),
           SizedBox(
             height: 20,
@@ -71,7 +82,8 @@ class ChartApp extends StatelessWidget {
               generateAnotherData(),
               animate: true,
             ),
-          )
+          ),
+          Container(height: 220, child: SelectionBarHighlight.withSampleData()),
         ],
       ),
     );
