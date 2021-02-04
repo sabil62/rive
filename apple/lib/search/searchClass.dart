@@ -43,56 +43,65 @@ class _SearchClassState extends State<SearchClass> {
         appBar: AppBar(
           title: Text("Search Class"),
         ),
-        body: ListView.builder(
-          itemCount: playerActualDisplay.length + 1,
-          itemBuilder: (context, index) {
-            return index == 0
-                ? searchBar()
-                : Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 12, 4, 12),
-                    child: Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(14),
-                          color: Colors.orange[200]),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(playerActualDisplay[index - 1].name),
-                            Text(playerActualDisplay[index - 1].email)
-                          ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: playerActualDisplay.length + 1,
+            itemBuilder: (context, index) {
+              return index == 0
+                  ? searchBar()
+                  : Padding(
+                      padding: const EdgeInsets.fromLTRB(4, 12, 4, 12),
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                            color: Colors.orange[200]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(playerActualDisplay[index - 1].name),
+                              Text(playerActualDisplay[index - 1].email)
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  );
-          },
+                    );
+            },
+          ),
         ));
   }
 
   Widget searchBar() {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: "Enter the query",
-        labelStyle:
-            TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[300]),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(width: 5, color: Colors.blue[200])),
-        focusColor: Colors.green[200],
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green[800])),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextField(
+        decoration: InputDecoration(
+          labelText: "Enter the query",
+          hintText: "Enter the query",
+          hintStyle:
+              TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[300]),
+          labelStyle:
+              TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[700]),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(18),
+              borderSide: BorderSide(width: 10, color: Colors.blue[200])),
+          focusColor: Colors.green[200],
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.green[800])),
+        ),
+        onChanged: (valueWritten) {
+          valueWritten = valueWritten.toLowerCase();
+          setState(() {
+            playerActualDisplay = playering.where((value) {
+              return value.name.toLowerCase().contains(valueWritten) ||
+                  value.email.toLowerCase().contains(valueWritten);
+            }).toList();
+          });
+        },
       ),
-      onChanged: (valueWritten) {
-        valueWritten = valueWritten.toLowerCase();
-        setState(() {
-          playerActualDisplay = playering.where((value) {
-            return value.name.toLowerCase().contains(valueWritten) ||
-                value.email.toLowerCase().contains(valueWritten);
-          }).toList();
-        });
-      },
     );
   }
 }

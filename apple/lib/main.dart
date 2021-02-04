@@ -15,6 +15,7 @@ import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
 import 'package:apple/stream/stream.dart';
+import 'package:apple/stream/streamInHttp.dart';
 import 'package:flutter/material.dart';
 import './search/search.dart';
 
@@ -281,9 +282,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 size: 34,
                 color: Colors.pinkAccent,
               ),
-              title: Text('TabBar'),
+              title: Text('Search from Class'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => SearchClass())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.charging_station,
+                size: 34,
+                color: Colors.redAccent,
+              ),
+              title: Text('STREAM in http'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => HttpStream())),
             ),
           ],
         ),
