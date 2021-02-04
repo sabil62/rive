@@ -12,6 +12,7 @@ import 'package:apple/provider/counterProvider.dart';
 import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
+import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
 import 'package:apple/stream/stream.dart';
 import 'package:flutter/material.dart';
@@ -273,6 +274,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => StreamAppSimple())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent,
+              ),
+              title: Text('TabBar'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => SearchClass())),
             ),
           ],
         ),
