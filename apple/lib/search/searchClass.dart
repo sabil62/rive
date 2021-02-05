@@ -33,8 +33,9 @@ class _SearchClassState extends State<SearchClass> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    playerActualDisplay =
-        playering.map((item) => new Playerss.clone(item)).toList();
+    // playerActualDisplay =
+    //     playering.map((item) => new Playerss.clone(item)).toList();
+    playerActualDisplay = [...playering];
   }
 
   @override
