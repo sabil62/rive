@@ -4,6 +4,7 @@ import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/charts/chart.dart';
+import 'package:apple/clip/clipPath.dart';
 
 import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
@@ -319,6 +320,20 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Http Complex App'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => HttpComplex())),
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 3,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent,
+              ),
+              title: Text('ClipPath'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => ClipPathApp())),
             ),
           ],
         ),
