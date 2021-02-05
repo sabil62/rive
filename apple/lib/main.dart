@@ -15,6 +15,8 @@ import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
 import 'package:apple/stream/stream.dart';
+import 'package:apple/stream/streamHttpClass.dart';
+import 'package:apple/stream/streamHttpReqesIn.dart';
 import 'package:apple/stream/streamInHttp.dart';
 import 'package:flutter/material.dart';
 import './search/search.dart';
@@ -295,6 +297,28 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('STREAM in http'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => HttpStream())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.deck,
+                size: 34,
+                color: Colors.purple,
+              ),
+              title: Text('STREAM HTTP with CLass'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => StreamHTTPwithClass())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent,
+              ),
+              title: Text('Http Complex App'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => HttpComplex())),
             ),
           ],
         ),

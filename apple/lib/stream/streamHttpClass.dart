@@ -9,7 +9,9 @@ class StreamHTTPwithClass extends StatefulWidget {
 }
 
 class _StreamHTTPwithClassState extends State<StreamHTTPwithClass> {
-  List<Bussiness> bussiness;
+  List<Bussiness> bussiness = [];
+  //or  List<Bussiness> bussiness = ;
+
   List data;
   Future getdata() async {
     var url = "https://jsonplaceholder.typicode.com/users";
@@ -17,10 +19,11 @@ class _StreamHTTPwithClassState extends State<StreamHTTPwithClass> {
     setState(() {
       data = jsonDecode(response.body);
     });
-    List<Bussiness> buss;
+    var buss = List<Bussiness>();
     for (var u in data) {
       buss.add(Bussiness.fromJson(u));
     }
+    return buss;
   }
 
   @override
@@ -94,6 +97,36 @@ class _StreamHTTPwithClassState extends State<StreamHTTPwithClass> {
       yield bussiness[i];
     }
   }
+
+//   Widget searchBar() {
+//     return Padding(
+//       padding: const EdgeInsets.all(8.0),
+//       child: TextField(
+//         decoration: InputDecoration(
+//           labelText: "Enter the query",
+//           hintText: "Enter the query",
+//           hintStyle:
+//               TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[300]),
+//           labelStyle:
+//               TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[700]),
+//           border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(18),
+//               borderSide: BorderSide(width: 10, color: Colors.blue[200])),
+//           focusColor: Colors.green[200],
+//           focusedBorder: OutlineInputBorder(
+//               borderSide: BorderSide(color: Colors.green[800])),
+//         ),
+//         onChanged: (valueWritten) {
+//           valueWritten = valueWritten.toLowerCase();
+//           setState(() {
+//             bussinessDisplay = bussiness.where((value) {
+//               return value.name.toLowerCase().contains(valueWritten) ||
+//                   value.email.toLowerCase().contains(valueWritten);
+//             }).toList();
+//           });
+//         },
+//       ),
+//     );
 }
 
 class Bussiness {
