@@ -5,6 +5,7 @@ import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/charts/chart.dart';
 import 'package:apple/clip/clipPath.dart';
+import 'package:apple/clip/clipPath2.dart';
 
 import 'package:apple/http/http.dart';
 import 'package:apple/http/httpComplex.dart';
@@ -334,6 +335,16 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('ClipPath'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => ClipPathApp())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.library_add,
+                size: 34,
+                color: Colors.purple,
+              ),
+              title: Text('Clip Two'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => ClipTwo())),
             ),
           ],
         ),
