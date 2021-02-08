@@ -12,6 +12,22 @@ class ClipTwo extends StatelessWidget {
         child: ListView(
           children: [
             ClipPath(
+              clipper: Human(),
+              child: containerWidget(
+                  250.0, 540.0, Colors.grey[100], Colors.grey[600]),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            ClipPath(
+              clipper: Human(),
+              child: containerWidget(
+                  250.0, 540.0, Colors.pink[100], Colors.pink[600]),
+            ),
+            SizedBox(
+              height: 22,
+            ),
+            ClipPath(
               clipper: Customer(),
               child: Container(
                 height: 250,
@@ -29,14 +45,6 @@ class ClipTwo extends StatelessWidget {
                         end: Alignment.bottomRight)),
               ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            ClipPath(
-              clipper: Human(),
-              child: containerWidget(
-                  250.0, 540.0, Colors.pink[100], Colors.pink[600]),
-            )
           ],
         ),
       ),
@@ -69,7 +77,7 @@ class Human extends CustomClipper<Path> {
     // TODO: implement getClip
     var path = Path();
     //left face
-    path.moveTo(size.width * 0.48, 0);
+    path.moveTo(size.width * 0.48, 3);
     path.quadraticBezierTo(size.width * 0.3, 45, size.width * 0.4, 90);
     //left neck
     path.lineTo(size.width * 0.4, 100);
@@ -83,10 +91,32 @@ class Human extends CustomClipper<Path> {
     path.lineTo(size.width * 0.25, 200);
     path.quadraticBezierTo(size.width * 0.15, 220, size.width * 0.25, 240);
     path.lineTo(size.width * 0.4, 200);
-    //box
-    path.lineTo(size.width * 0.4, size.height);
-    path.lineTo(size.width, size.height);
-    path.lineTo(size.width, 0);
+    //between
+    path.lineTo(size.width * 0.5, 173);
+    // path.lineTo(size.width * 0.6, 200);
+    //Right leg
+    path.lineTo(size.width * 0.8, 240);
+    path.quadraticBezierTo(size.width * 0.85, 220, size.width * 0.8, 205);
+    path.lineTo(size.width * 0.8, 205);
+    //KAMAR
+    path.lineTo(size.width * 0.6, 160);
+
+    path.lineTo(size.width * 0.6, 140);
+    //right hand
+    path.lineTo(size.width * 0.9, 140);
+    path.quadraticBezierTo(size.width * 0.95, 120, size.width * 0.9, 100);
+    path.lineTo(size.width * 0.9, 100);
+    path.lineTo(size.width * 0.6, 100);
+    //neck
+    path.lineTo(size.width * 0.6, 90);
+    //head
+    path.quadraticBezierTo(size.width * 0.7, 45, size.width * 0.52, 3);
+
+    //    path.moveTo(size.width * 0.48, 0);
+    // path.quadraticBezierTo(size.width * 0.3, 45, size.width * 0.4, 90);
+
+    path.quadraticBezierTo(size.width * 0.5, 0, size.width * 0.48, 0);
+
     return path;
   }
 
@@ -102,15 +132,17 @@ class Customer extends CustomClipper<Path> {
   getClip(Size size) {
     // TODO: implement getClip
     var path = Path();
-    path.moveTo(size.width * 0.48, 0);
+    path.moveTo(size.width * 0.48, 5);
     path.quadraticBezierTo(
         size.width * 0.3, 40, size.width * 0.4, 80); //upto neck
     //jjust rectangle
-    path.lineTo(size.width * 0.4, size.height);
-    path.lineTo(size.width * 0.6, size.height);
+    path.lineTo(size.width * 0.05, size.height);
+    path.lineTo(size.width * 0.5, size.height * 0.5);
+    path.lineTo(size.width * 0.95, size.height);
     path.lineTo(size.width * 0.6, 80);
     //upto here
-    path.quadraticBezierTo(size.width * 0.7, 40, size.width * 0.52, 0);
+    path.quadraticBezierTo(size.width * 0.7, 40, size.width * 0.52, 5);
+    path.quadraticBezierTo(size.width * 0.5, 0, size.width * 0.48, 5);
     return path;
   }
 
