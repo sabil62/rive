@@ -2,6 +2,7 @@ import 'package:apple/Tabs/tab.dart';
 import 'package:apple/Tabs/tabBottom.dart';
 import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
+import 'package:apple/animation/animation_transition.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
 import 'package:apple/charts/chart.dart';
 import 'package:apple/clip/clipPath.dart';
@@ -345,6 +346,21 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('Clip Two'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => ClipTwo())),
+            ),
+            Divider(
+              height: 3,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.library_add,
+                size: 34,
+                color: Colors.purple,
+              ),
+              title: Text('Transition Animations'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => TransitionAnimation())),
             ),
           ],
         ),
