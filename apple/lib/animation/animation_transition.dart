@@ -20,6 +20,12 @@ class _TransitionAnimationState extends State<TransitionAnimation>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

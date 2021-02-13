@@ -4,6 +4,7 @@ import 'package:apple/Tabs/tabBottomTwo.dart';
 import 'package:apple/animation/animation_simple.dart';
 import 'package:apple/animation/animation_transition.dart';
 import 'package:apple/animation/simple_animation_plug.dart';
+import 'package:apple/animation/transitionSecond.dart';
 import 'package:apple/charts/chart.dart';
 import 'package:apple/clip/clipPath.dart';
 import 'package:apple/clip/clipPath2.dart';
@@ -363,6 +364,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => TransitionAnimation())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent[700],
+              ),
+              title: Text('Transition'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => TransitionSecond())),
             ),
           ],
         ),
