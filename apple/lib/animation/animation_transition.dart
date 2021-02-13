@@ -38,10 +38,48 @@ class _TransitionAnimationState extends State<TransitionAnimation>
                     borderRadius: BorderRadius.circular(17),
                     color: Colors.red[200]),
               ),
+            ),
+            Divider(
+              height: 20,
+              thickness: 4,
+              color: Colors.black,
+            ),
+            ScaleTransition(
+              scale: _animation,
+              child: containers(),
+            ),
+            Divider(
+              height: 20,
+              thickness: 4,
+              color: Colors.black,
+            ),
+            FadeTransition(
+              opacity: _animation,
+              child: containers(),
+            ),
+            Divider(
+              color: Colors.black,
+            ),
+            RotationTransition(
+              turns: _animation,
+              child: containers(),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget containers() {
+    return Container(
+      height: 240,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(26),
+          border: Border.all(color: Colors.grey[200], width: 2),
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.pink[100], Colors.pink[600]])),
     );
   }
 }

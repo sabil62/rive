@@ -348,13 +348,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   new MaterialPageRoute(builder: (context) => ClipTwo())),
             ),
             Divider(
-              height: 3,
+              height: 6,
+              color: Colors.black,
+              thickness: 6,
             ),
             ListTile(
               leading: Icon(
-                Icons.library_add,
+                Icons.radio,
                 size: 34,
-                color: Colors.purple,
+                color: Colors.yellow[800],
               ),
               title: Text('Transition Animations'),
               onTap: () => Navigator.push(
