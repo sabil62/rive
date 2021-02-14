@@ -16,6 +16,7 @@ import 'package:apple/provider/counterProvider.dart';
 import 'package:apple/repeat/animation/inbuildAnimation.dart';
 import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
+import 'package:apple/repeat/search/search.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
 import 'package:apple/sharedPreference/simpleSharedPreference.dart';
@@ -393,6 +394,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => SimpleSharedPrefernces())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.navigate_next,
+                size: 34,
+                color: Colors.yellow[700],
+              ),
+              title: Text('Searching'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Searching())),
             ),
           ],
         ),

@@ -7,8 +7,6 @@ class SimpleSharedPrefernces extends StatefulWidget {
 }
 
 class _SimpleSharedPreferncesState extends State<SimpleSharedPrefernces> {
-  String name;
-  String email;
   Future setPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("name", "lions");
