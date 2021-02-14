@@ -18,6 +18,7 @@ import 'package:apple/repeat/animation/simpleAnimPlug.dart';
 import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
+import 'package:apple/sharedPreference/simpleSharedPreference.dart';
 import 'package:apple/stream/stream.dart';
 import 'package:apple/stream/streamHttpClass.dart';
 import 'package:apple/stream/streamHttpReqesIn.dart';
@@ -376,6 +377,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => TransitionSecond())),
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 3,
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.tty,
+                size: 34,
+                color: Colors.yellow[700],
+              ),
+              title: Text('Simple SharedPrefernce'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => SimpleSharedPrefernces())),
             ),
           ],
         ),
