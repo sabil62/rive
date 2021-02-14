@@ -30,7 +30,7 @@ class _SimpleSharedPreferncesState extends State<SimpleSharedPrefernces> {
         title: Text("Shared Prefernce"),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             "Please See in Console",

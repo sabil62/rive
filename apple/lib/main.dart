@@ -19,6 +19,7 @@ import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/repeat/search/search.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
+import 'package:apple/sharedPreference/sharedPreferencetwo.dart';
 import 'package:apple/sharedPreference/simpleSharedPreference.dart';
 import 'package:apple/stream/stream.dart';
 import 'package:apple/stream/streamHttpClass.dart';
@@ -399,11 +400,23 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: Icon(
                 Icons.navigate_next,
                 size: 34,
-                color: Colors.yellow[700],
+                color: Colors.pink[700],
               ),
               title: Text('Searching'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => Searching())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.no_encryption,
+                size: 34,
+                color: Colors.orange[700],
+              ),
+              title: Text('SharedPrefernce Two'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => SharedPreferenceTwo())),
             ),
           ],
         ),
