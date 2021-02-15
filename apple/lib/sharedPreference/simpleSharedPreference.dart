@@ -21,6 +21,9 @@ class _SimpleSharedPreferncesState extends State<SimpleSharedPrefernces> {
     two = prefs.getString("email");
     print("the name is" + one);
     print("the email is" + two);
+    //test from other files
+    String three = prefs.getString("shareName");
+    print("from another is" + three);
   }
 
   @override

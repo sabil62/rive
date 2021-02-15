@@ -19,6 +19,7 @@ import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/repeat/search/search.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
+import 'package:apple/sharedPreference/sharedPreferenceThree.dart';
 import 'package:apple/sharedPreference/sharedPreferencetwo.dart';
 import 'package:apple/sharedPreference/simpleSharedPreference.dart';
 import 'package:apple/stream/stream.dart';
@@ -417,6 +418,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => SharedPreferenceTwo())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.trip_origin,
+                size: 34,
+                color: Colors.red,
+              ),
+              title: Text('SharedPrefernce Three'),
+              onTap: () => Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => SharedThree())),
             ),
           ],
         ),
