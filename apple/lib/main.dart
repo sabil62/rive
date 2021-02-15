@@ -19,6 +19,7 @@ import 'package:apple/repeat/provider/counterProvider.dart';
 import 'package:apple/repeat/search/search.dart';
 import 'package:apple/search/searchClass.dart';
 import 'package:apple/search/searchComp.dart';
+import 'package:apple/sharedPreference/formSharedPreference.dart';
 import 'package:apple/sharedPreference/sharedPreferenceThree.dart';
 import 'package:apple/sharedPreference/sharedPreferencetwo.dart';
 import 'package:apple/sharedPreference/simpleSharedPreference.dart';
@@ -428,6 +429,18 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text('SharedPrefernce Three'),
               onTap: () => Navigator.push(context,
                   new MaterialPageRoute(builder: (context) => SharedThree())),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.ramen_dining,
+                size: 34,
+                color: Colors.pinkAccent[700],
+              ),
+              title: Text('Form Shared Preference'),
+              onTap: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (context) => FormSharedPreference())),
             ),
           ],
         ),
